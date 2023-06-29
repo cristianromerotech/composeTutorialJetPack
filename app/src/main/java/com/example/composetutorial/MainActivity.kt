@@ -1,53 +1,72 @@
 package com.example.composetutorial
 
-import androidx.appcompat.app.AppCompatActivity
+
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+
 import androidx.compose.foundation.layout.padding
 
-/*class MainActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-    }
-}*/
 
 import androidx.compose.material.Text
+import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
-class MainActivity : ComponentActivity() {
+class MainActivity : ComponentActivity() { //app
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-
-                ) {
-                    Greeting("Android")
-                }
+            MyApp()
             }
         }
 
+@Composable
+    fun MyApp(
+    modifier: Modifier = Modifier,
+    names: List<String> = listOf("World", "Compose")
+    ) {
+    Column(modifier = modifier.padding(vertical = 4.dp)) {
+        for (name in names) {
+            Greeting(name = name)
+        }
+    }
+    }
 
     @Composable
     private fun Greeting(name: String) {
-        //Text(text = "Hello $name!")
-        //change color text to green
-        //Text(text = "Hello $name!", color = Color.Green)
 
-        Text(text = "Hello $name!", modifier = Modifier.padding(34.dp))
+        val expanded = remember { mutableStateOf(false) }
 
+        val extraPadding = if (expanded.value) 48.dp else 0.dp
+
+        Surface(
+            color = MaterialTheme.colorScheme.primary,
+            modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp)
+        ) {
+            Row(modifier = Modifier.padding(24.dp)) {
+                Column(modifier = Modifier
+                    .weight(1f)
+                    .padding(bottom = extraPadding)
+                ) {
+                    Text(text = "Hello, ")
+                    Text(text = name)
+                }
+                ElevatedButton(
+                    onClick = { expanded.value = !expanded.value }
+                ) {
+                    Text(if (expanded.value) "Show less" else "Show more")
+                }
+            }
+        }
     }
 
     @Preview(showBackground = true, name = "Text preview")
