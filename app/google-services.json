@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "664875082410",
+    "project_id": "clonar-78a02",
+    "storage_bucket": "clonar-78a02.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:664875082410:android:92e4b826b96babc9b566d3",
+        "android_client_info": {
+          "package_name": "com.example.composetutorial"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "664875082410-n8hh8jghdfgferlg8b7l9rjt6gvnb4t0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_THhqmDhmPFUbgEC0mg729JhIClSM-z4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "664875082410-n8hh8jghdfgferlg8b7l9rjt6gvnb4t0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
